@@ -1,0 +1,88 @@
+/* 
+.texture {
+   background-color: #4a4947;
+   background-image: url("../assets/global.svg") !important;
+   background-repeat: no-repeat;
+   background-size: contain;
+}  */
+
+.fix {
+   background-color: rgb(73, 192, 218) !important;
+}
+
+.glass {
+   background: rgba(245, 245, 245, 0.5) !important;
+   backdrop-filter: blur(9px);
+}
+.glassi {
+   background: rgba(255, 255, 255, 0.1) !important;
+}
+.display {
+   display: flex;
+   justify-content: center;
+}
+.header {
+   position: absolute;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   border-radius: 10px;
+   background: rgba(9, 14, 17, 0.3) !important;
+   backdrop-filter: blur(10px);
+}
+
+.logo {
+   mix-blend-mode: color-dodge;
+}
+
+.NavigationMenu {
+   margin: 10px;
+   padding: 10px;
+}
+.tranparent {
+   background-color: transparent !important;
+}
+
+
+.glow1 {
+   background: #6522f2;
+   box-shadow: -9px 9px 99px 0px rgba(101, 34, 242, 0.33),
+      9px -9px 99px 0px rgba(101, 34, 242, 0.33),
+      -9px -9px 99px 0px #9362ff inset, 9px 9px 99px 0px #9362ff inset;
+}
+
+.glow1:hover {
+   box-shadow: -9px 9px 99px 0px rgba(81, 0, 255, 0.33),
+      9px -9px 99px 0px rgba(81, 0, 255, 0.33), -9px -9px 99px 0px #854cff inset,
+      9px 9px 99px 0px #854cff inset;
+}
+
+.glow2 {
+   background: #16a34a;
+   box-shadow: -9px 9px 99px 0px rgba(22, 163, 74, 0.33),
+      9px 9px 99px 0px rgba(22, 163, 74, 0.33), -9px -9px 99px 0px #16a34a inset,
+      9px 9px 99px 0px #16a34a inset;
+}
+
+.glow3 {
+   background: #ff896f;
+   box-shadow: -9px 9px 99px 0px rgba(255, 83, 45, 0.33),
+      9px 9px 99px 0px rgba(255, 83, 45, 0.33), -9px -9px 99px 0px #ff6544 inset,
+      9px 9px 99px 0px #ff6544 inset;
+}
+
+.glow3:hover {
+   background: #ff896f;
+   box-shadow: -9px 9px 99px 0px rgba(255, 83, 45, 0.33),
+      9px 9px 99px 0px rgba(255, 83, 45, 0.33), -9px -9px 99px 0px #ff854c inset,
+      9px 9px 99px 0px #ff6544 inset;
+}
+
+.align {
+   justify-content: space-between;
+}
+
+/* .bggradient {
+   background: linear-gradient(109deg, #d6e2e6 1.72%, #4a4947 100.92%);
+} */
