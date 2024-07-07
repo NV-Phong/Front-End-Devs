@@ -18,7 +18,7 @@ import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
 import { NextStep } from "../Custom/NextStep";
 
-const SERVER_PORT = process.env.SERVER_PORT;
+const SERVER_PORT = process.env.NEXT_PUBLIC_PORT || 3000;
 
 const Register: React.FC = () => {
    const [userName, setuserName] = useState("");
@@ -41,12 +41,12 @@ const Register: React.FC = () => {
 
       try {
          // const response = await axios.post(`${SERVER_PORT}/Auth/Register`, data);
-         const response = await axios.post(`http://localhost:333/Auth/Register`, data);
+         const response = await axios.post(`${SERVER_PORT}Auth/Register`, data);
          console.log(response);
          console.log("Đăng Ký Thành Công!");
          if (response.status === 201) {
             const handleLoginNowClick = () => {
-               window.location.reload();
+               window.location.reload(); 
             };
             toast({
                variant: "default",

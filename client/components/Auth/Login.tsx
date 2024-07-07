@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
 
-const SERVER_PORT = process.env.SERVER_PORT;
+const SERVER_PORT = process.env.NEXT_PUBLIC_PORT;
 
 const Login: React.FC = () => {
    const [userName, setuserName] = useState("");
@@ -31,17 +31,17 @@ const Login: React.FC = () => {
       event.preventDefault();
       setIsSubmitting(true);
       const data = {
-         userName,
-         password,
+         UserName:userName,
+         Password:password,
       };
 
       try {
-         const response = await axios.post(`${SERVER_PORT}/Login`, data);
+         const response = await axios.post(`${SERVER_PORT}Auth/Login`, data);
          console.log(response);
          console.log("Đăng Nhập Thành Công!");
 
          if (response.status === 200) {
-            router.push("/testdashboard");
+            router.push("/TestLogin");
          }
       } catch (error) {
          console.error(error);
