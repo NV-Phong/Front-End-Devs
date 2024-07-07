@@ -45,4 +45,6 @@ public class User
 	@JsonProperty("IsDeleted")
 	private Boolean IsDeleted;
 
+
+
 }
