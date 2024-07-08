@@ -1,4 +1,4 @@
-package frontend.devs.server.DTO;
+package frontend.devs.server.ResponseEntities;
 
 import lombok.Data;
 
@@ -10,6 +10,6 @@ public class JwtResponse
 
 	public JwtResponse(String jwt)
 		{
-			this.Token    = jwt;
+			this.Token = jwt;
 		}
 }

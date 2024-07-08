@@ -45,4 +45,8 @@ public class User
 	@JsonProperty("IsDeleted")
 	private Boolean IsDeleted;
 
+	@ManyToOne
+	@JoinColumn(name = "IDRole")
+	private Role Role;
+
 }

@@ -1,6 +1,6 @@
 package frontend.devs.server.Controller;
 
-import frontend.devs.server.DTO.JwtResponse;
+import frontend.devs.server.ResponseEntities.JwtResponse;
 import frontend.devs.server.Entities.User;
 import frontend.devs.server.Security.JwtTokenProvider;
 import frontend.devs.server.Service.UserService;
@@ -53,7 +53,6 @@ public class AuthController
 					cookie.setHttpOnly(false);
 					cookie.setPath("/");
 					response.addCookie(cookie);
-
 					return ResponseEntity.ok(new JwtResponse(token));
 				}
 			else
