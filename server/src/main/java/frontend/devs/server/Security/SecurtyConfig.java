@@ -54,7 +54,7 @@ public class SecurtyConfig
 					  .authorizeHttpRequests(
 								 auth -> auth.requestMatchers("/Auth/**")
 											.permitAll()
-											.requestMatchers("/CRUD/**").authenticated()
+//											.requestMatchers("/CRUD/**").authenticated()
 											.anyRequest()
 											.authenticated())
 					  .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

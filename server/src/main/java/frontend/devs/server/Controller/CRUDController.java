@@ -1,22 +1,19 @@
 package frontend.devs.server.Controller;
 
 import frontend.devs.server.Entities.CRUD;
-import frontend.devs.server.Entities.User;
 import frontend.devs.server.Repositories.CRUDRepository;
-import frontend.devs.server.Repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/CRUD")
 public class CRUDController
 {
-	@Autowired
 	private CRUDRepository _CRUDRepository;
-	@Autowired
-	private UserRepository _UserRepository;
+
 	@GetMapping
 	public List<CRUD> GetCRUD()
 		{
