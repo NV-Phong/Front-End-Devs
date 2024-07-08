@@ -1,7 +1,7 @@
-'use client'
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
@@ -17,31 +17,46 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { TabsContent } from "@/components/ui/tabs";
-
+import Cookies from "js-cookie";
 const SERVER_PORT = process.env.NEXT_PUBLIC_PORT;
 
 const Login: React.FC = () => {
    const [userName, setuserName] = useState("");
    const [password, setpassword] = useState("");
    const [isSubmitting, setIsSubmitting] = useState(false);
-   const router = useRouter(); 
+   const router = useRouter();
    const { toast } = useToast();
+
+   useEffect(() => {
+      const token = Cookies.get("token");
+      if (token) {
+         router.push("/CRUD");
+      }
+   }, [router]);
 
    const SubmitLogin = async (event: React.SyntheticEvent) => {
       event.preventDefault();
       setIsSubmitting(true);
       const data = {
-         UserName:userName,
-         Password:password,
+         UserName: userName,
+         Password: password,
       };
 
       try {
-         const response = await axios.post(`${SERVER_PORT}Auth/Login`, data);
+         const response = await axios.post(`${SERVER_PORT}Auth/Login`, data, {
+            withCredentials: true,
+         });
          console.log(response);
          console.log("Đăng Nhập Thành Công!");
 
          if (response.status === 200) {
-            router.push("/TestLogin");
+            toast({
+               variant: "default",
+               title: "Login Successfully",
+               description: "Let go! to unleash your dreams.",
+               action: <ToastAction altText="Ok">Ok</ToastAction>,
+            });
+            router.push("/CRUD");
          }
       } catch (error) {
          console.error(error);
@@ -83,7 +98,8 @@ const Login: React.FC = () => {
                   <CardHeader>
                      <CardTitle>Login</CardTitle>
                      <CardDescription>
-                        Make changes to your account here. Click save when you&apos;re done.
+                        Make changes to your account here. Click save when
+                        you&apos;re done.
                      </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-2">
