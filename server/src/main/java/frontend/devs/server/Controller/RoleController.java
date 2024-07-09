@@ -1,15 +1,11 @@
 package frontend.devs.server.Controller;
 
-import frontend.devs.server.Entities.CRUD;
 import frontend.devs.server.Entities.Role;
-import frontend.devs.server.Repositories.CRUDRepository;
 import frontend.devs.server.RequestEntities.RequestRole;
 import frontend.devs.server.Service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
