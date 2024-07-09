@@ -1,3 +1,4 @@
+import { DockDemo } from "@/components/Custom/Dock";
 import Image from "next/image";
 
 export default function Home() {
@@ -37,6 +38,9 @@ export default function Home() {
                height={37}
                priority
             />
+            {/* <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
+               FE Devs
+            </span> */}
          </div>
 
          <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">

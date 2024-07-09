@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import "@/styles/style.css";
+import { ThemeProvider } from "@/components/Themes/theme-provider";
+import { DockDemo } from "@/components/Custom/Dock";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +21,19 @@ export default function RootLayout({
    return (
       <html lang="en" id="root">
          <body className={inter.className}>
-            {children}
-            <Toaster />
+            
+            <ThemeProvider
+               attribute="class"
+               defaultTheme="light"
+               enableSystem
+               disableTransitionOnChange
+            >
+               <DockDemo/>
+               {children}
+               
+               <Toaster />
+            </ThemeProvider>
+            
          </body>
       </html>
    );
