@@ -40,7 +40,6 @@ const Register: React.FC = () => {
       };
 
       try {
-         // const response = await axios.post(`${SERVER_PORT}/Auth/Register`, data);
          const response = await axios.post(`${SERVER_PORT}Auth/Register`, data);
          console.log(response);
          console.log("Đăng Ký Thành Công!");

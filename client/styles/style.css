@@ -14,13 +14,16 @@
    background: rgba(245, 245, 245, 0.5) !important;
    backdrop-filter: blur(9px);
 }
+
 .glassi {
    background: rgba(255, 255, 255, 0.1) !important;
 }
+
 .display {
    display: flex;
    justify-content: center;
 }
+
 .header {
    position: absolute;
    width: 100%;
@@ -40,10 +43,14 @@
    margin: 10px;
    padding: 10px;
 }
+
 .tranparent {
    background-color: transparent !important;
 }
 
+.shadow {
+   box-shadow: 0px 1px 1px -0.5px rgba(16, 117, 75, 0.24), 0px 3px 3px -1.5px rgba(26, 111, 36, 0.24), 0px 6px 6px -3px rgba(23, 149, 55, 0.24), 0px 12px 12px -6px rgba(29, 144, 61, 0.32), 0px 24px 24px -12px rgba(23, 140, 107, 0.24), 0px 32px 32px -16px rgba(17, 91, 43, 0.24), 0px 0.5px 0.5px 0px rgba(255, 255, 255, 0.4) inset, 0px 1px 2px 0px rgba(255, 255, 255, 0.32) inset;
+}
 
 .glow1 {
    background: #6522f2;

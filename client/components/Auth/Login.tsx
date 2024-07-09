@@ -30,7 +30,7 @@ const Login: React.FC = () => {
    useEffect(() => {
       const token = Cookies.get("token");
       if (token) {
-         router.push("/CRUD");
+         router.push("/collection");
       }
    }, [router]);
 
@@ -56,7 +56,7 @@ const Login: React.FC = () => {
                description: "Let go! to unleash your dreams.",
                action: <ToastAction altText="Ok">Ok</ToastAction>,
             });
-            router.push("/CRUD");
+            router.push("/collection");
          }
       } catch (error) {
          console.error(error);
@@ -168,7 +168,7 @@ const Login: React.FC = () => {
                   <CardFooter className="align">
                      <Button variant="outline">Cancel</Button>
                      <Button
-                        className="glow3"
+                        className="shadow"
                         type="submit"
                         disabled={isSubmitting}
                      >

@@ -68,7 +68,7 @@
 body {
 	font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
 	/* background-image: url('/Background.png') !important; */
-	background-image: url('/Bento-Card.svg') !important;
+	/* background-image: url('/Bento-Card.svg') !important; */
 	background-repeat: no-repeat;
 	background-size: cover;
 }

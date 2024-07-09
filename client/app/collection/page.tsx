@@ -1,26 +1,33 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import router from "next/router";
+import Create from "@/components/Collection/Create";
+import { useRouter } from "next/navigation";
+
+const SERVER_PORT = process.env.NEXT_PUBLIC_PORT;
 
 function MyComponent() {
    const [data, setData] = useState<any>(null);
    const [error, setError] = useState<string | null>(null);
+   const router = useRouter();
 
    useEffect(() => {
       const fetchData = async () => {
          try {
             const token = Cookies.get("token");
-            console.log("Token:", token);
+            if (!token) {
+               router.push("/Auth");
+            } else {
+               console.log("Token:", token);
+               const response = await axios.get(`${SERVER_PORT}Collection`, {
+                  headers: {
+                     Authorization: `Bearer ${token}`,
+                  },
+               });
 
-            const response = await axios.get("http://localhost:333/CRUD", {
-               headers: {
-                  Authorization: `Bearer ${token}`,
-               },
-            });
-
-            setData(response.data);
+               setData(response.data);
+            }
          } catch (error: any) {
             if (error.response) {
                // Xử lý lỗi cụ thể từ server (ví dụ: 401 Unauthorized)
@@ -38,12 +45,7 @@ function MyComponent() {
       };
 
       fetchData();
-   }, []);
-
-   const handleLogout = () => {
-      Cookies.remove("token");
-      router.push('/Auth'); // Chuyển hướng sau khi đăng xuất
-  };
+   }, [router]);
 
    if (error) return <div>Lỗi: {error}</div>;
    if (!data) return <div>Đang tải...</div>;
@@ -52,6 +54,7 @@ function MyComponent() {
       <div>
          {/* Hiển thị dữ liệu */}
          <pre>{JSON.stringify(data, null, 2)}</pre>
+         <Create />
       </div>
    );
 }
