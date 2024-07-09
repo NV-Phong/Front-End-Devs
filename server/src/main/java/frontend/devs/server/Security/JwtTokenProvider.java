@@ -1,7 +1,9 @@
 package frontend.devs.server.Security;
 
+import frontend.devs.server.Entities.CustomUserDetails;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -20,11 +22,12 @@ public class JwtTokenProvider {
 		this.jwtSecret = Keys.hmacShaKeyFor(secret.getBytes());
 	}
 
-	public String generateToken(String username) {
+	public String generateToken(String username, CustomUserDetails userDetails) {
 		Date now = new Date();
 		Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
 
 		return Jwts.builder()
+				  .claim("userId", userDetails.getId())///new
 				  .setSubject(username)
 				  .setIssuedAt(new Date())
 				  .setExpiration(expiryDate)
@@ -41,6 +44,18 @@ public class JwtTokenProvider {
 
 		return claims.getSubject();
 	}
+
+	// Trong lớp JwtTokenProvider
+	public String getUserIdFromToken(String token) {
+		Claims claims = Jwts.parserBuilder()
+				  .setSigningKey(jwtSecret)
+				  .build()
+				  .parseClaimsJws(token)
+				  .getBody();
+
+		return claims.get("userId", String.class); // Giả sử ID người dùng được lưu trong claim "userId"
+	}
+
 
 	public boolean validateToken(String authToken) {
 		try {

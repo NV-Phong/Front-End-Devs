@@ -21,6 +21,9 @@ public class CustomUserDetails implements UserDetails
 			// Return the authorities/roles of the user
 			return null; // Assuming User has a getRoles() method returning a Collection of GrantedAuthority
 		}
+	public String getId() { // Đổi tên thành getId()
+		return user.getIDUser();
+	}
 
 	@Override
 	public String getPassword()

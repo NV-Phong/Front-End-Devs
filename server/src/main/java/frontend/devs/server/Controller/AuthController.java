@@ -1,5 +1,6 @@
 package frontend.devs.server.Controller;
 
+import frontend.devs.server.Entities.CustomUserDetails;
 import frontend.devs.server.ResponseEntities.JwtResponse;
 import frontend.devs.server.Entities.User;
 import frontend.devs.server.Security.JwtTokenProvider;
@@ -47,7 +48,8 @@ public class AuthController
 
 			if (user != null && _BCryptPasswordEncoder.matches(credentials.getPassword(), user.getPassword()))
 				{
-					String token = _JwtTokenProvider.generateToken(user.getUserName());
+					CustomUserDetails userDetails = new CustomUserDetails(user);
+					String            token       = _JwtTokenProvider.generateToken(user.getUserName(), userDetails);
 
 					Cookie cookie = new Cookie("token", token);
 					cookie.setHttpOnly(false);
