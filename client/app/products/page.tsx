@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import CreateCollection from "@/components/Collection/CreateCollection";
+import CreateProduct from "@/components/Products/CreateProduct";
 
 const SERVER_PORT = process.env.NEXT_PUBLIC_PORT;
 
@@ -20,7 +20,7 @@ function MyComponent() {
                router.push("/Auth");
             } else {
                console.log("Token:", token);
-               const response = await axios.get(`${SERVER_PORT}Collection`, {
+               const response = await axios.get(`${SERVER_PORT}Products`, {
                   headers: {
                      Authorization: `Bearer ${token}`,
                   },
@@ -54,7 +54,7 @@ function MyComponent() {
       <div>
          {/* Hiển thị dữ liệu */}
          <pre>{JSON.stringify(data, null, 2)}</pre>
-         <CreateCollection/>
+         <CreateProduct />
       </div>
    );
 }

@@ -35,7 +35,7 @@ interface CollectionData {
    create_or_save: boolean;
 }
 
-const Create: React.FC = () => {
+const CreateCollection: React.FC = () => {
    const [name, setname] = useState("");
    const [create_or_save, setcreate_or_save] = useState("");
 	const [isOpen, setIsOpen] = useState(false);
@@ -114,7 +114,7 @@ const Create: React.FC = () => {
                </DialogHeader>
                <div className="grid gap-4 py-4">
                   <div className="grid grid-cols-4 items-center gap-4">
-                     <Label htmlFor="name" className="text-right">
+                     <Label htmlFor="name" className="text-left">
                         Name
                      </Label>
 
@@ -143,7 +143,7 @@ const Create: React.FC = () => {
    );
 };
 
-export default Create;
+export default CreateCollection;
 function setIsOpen(arg0: boolean) {
 	throw new Error("Function not implemented.");
 }
