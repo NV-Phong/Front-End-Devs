@@ -1,6 +1,7 @@
 package frontend.devs.server.Controller;
 
 import frontend.devs.server.Entities.Product;
+import frontend.devs.server.RequestEntities.CreateProduct;
 import frontend.devs.server.Service.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ProductController
 		}
 
 	@PostMapping
-	public ResponseEntity<?> addProduct(@RequestBody Product product, HttpServletRequest request)
+	public ResponseEntity<?> addProduct(@RequestBody CreateProduct product, HttpServletRequest request)
 		{
 			Product listproduct = productService.CreateProduct(product, request);
 			if (listproduct != null)

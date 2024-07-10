@@ -14,5 +14,6 @@ public class CreateProduct {
     private String description;
     private String image;
     private BigDecimal price;
-    private String attachment;
+    private boolean isprivate;
+    private String collectionname;
 }
