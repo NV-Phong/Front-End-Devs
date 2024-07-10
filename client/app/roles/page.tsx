@@ -13,17 +13,6 @@ function MyComponent() {
 
    const router = useRouter(); 
 
-    const handleLogout = async () => {
-        try {
-            await axios.post(`${SERVER_PORT}Auth/Logout`, { withCredentials: true });
-            Cookies.remove("token");
-            router.push("/Auth"); // Redirect to login page
-        } catch (error) {
-            console.error("Logout Error:", error);
-            // Consider adding a toast notification for error feedback
-        }
-    };
-    
    useEffect(() => {
       const fetchData = async () => {
          try {
@@ -60,10 +49,9 @@ function MyComponent() {
    if (!data) return <div>Đang tải...</div>;
 
    return (
-      <div>
+      <div className="mt-32">
          {/* Hiển thị dữ liệu */}
          <pre>{JSON.stringify(data, null, 2)}</pre>
-         <Button className="glow1" onClick={handleLogout}>Logout</Button>
       </div>
    );
 }

@@ -4,6 +4,20 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import CreateCollection from "@/components/Collection/CreateCollection";
+import { Label } from "../ui/label";
+import {
+   Select,
+   SelectContent,
+   SelectGroup,
+   SelectItem,
+   SelectTrigger,
+   SelectValue,
+} from "../ui/select";
+
+interface Collection {
+   id: string;
+   name: string;
+}
 
 const SERVER_PORT = process.env.NEXT_PUBLIC_PORT;
 
@@ -11,6 +25,8 @@ function MyComponent() {
    const [data, setData] = useState<any>(null);
    const [error, setError] = useState<string | null>(null);
    const router = useRouter();
+
+   const [collections, setCollections] = useState<Collection[]>([]);
 
    useEffect(() => {
       const fetchData = async () => {
@@ -20,11 +36,15 @@ function MyComponent() {
                router.push("/Auth");
             } else {
                console.log("Token:", token);
-               const response = await axios.get(`${SERVER_PORT}Collection`, {
-                  headers: {
-                     Authorization: `Bearer ${token}`,
-                  },
-               });
+               const response = await axios.get<Collection[]>(
+                  `${SERVER_PORT}Collection`,
+                  {
+                     headers: {
+                        Authorization: `Bearer ${token}`,
+                     },
+                  }
+               );
+               setCollections(response.data);
 
                setData(response.data);
             }
@@ -51,11 +71,20 @@ function MyComponent() {
    if (!data) return <div>Đang tải...</div>;
 
    return (
-      <div className="mt-32">
-         {/* Hiển thị dữ liệu */}
-         <pre>{JSON.stringify(data, null, 2)}</pre>
-         <CreateCollection/>
-      </div>
+      <Select>
+         <SelectTrigger className="w-[277px]">
+            <SelectValue placeholder="Select Collection" />
+         </SelectTrigger>
+         <SelectContent>
+            <SelectGroup>
+               {collections.map((collection) => (
+                  <SelectItem key={collection.id} value={collection.id}>
+                     {collection.name}
+                  </SelectItem>
+               ))}
+            </SelectGroup>
+         </SelectContent>
+      </Select>
    );
 }
 

@@ -38,22 +38,55 @@ import {
    SelectTrigger,
    SelectValue,
 } from "../ui/select";
+import SelectCollection from "../Collection/SelectCollection";
 
 const SERVER_PORT = process.env.NEXT_PUBLIC_PORT;
-interface CollectionData {
+interface Collection {
+   id: string;
    name: string;
-   create_or_save: boolean;
 }
 
 const Createproduct: React.FC = () => {
    const [name, setname] = useState("");
    const [description, setdescription] = useState("");
    const [isprivate, setisprivate] = useState("");
+   const [price, setprice] = useState("");
    const [isOpen, setIsOpen] = useState(false);
+   const [collectionname, setcollectionname] = useState("");
+   const [collections, setCollections] = useState<Collection[]>([]);
 
    const [isSubmitting, setIsSubmitting] = useState(false);
    const router = useRouter();
    const { toast } = useToast();
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const token = Cookies.get("token");
+            if (!token) {
+               router.push("/Auth");
+            } else {
+               console.log("Token:", token);
+               const response = await axios.get<Collection[]>(
+                  `${SERVER_PORT}Collection`,
+                  {
+                     headers: {
+                        Authorization: `Bearer ${token}`,
+                     },
+                  }
+               );
+               setCollections(response.data);
+            }
+         } catch (error: any) {
+            if (error.response) {
+            } else if (error.request) {
+            } else {
+            }
+         }
+      };
+
+      fetchData();
+   }, [router]);
 
    const SubmitCreate = async (event: React.SyntheticEvent) => {
       event.preventDefault();
@@ -61,7 +94,9 @@ const Createproduct: React.FC = () => {
       const data = {
          name,
          description,
+         price,
          isprivate,
+         collectionname,
       };
 
       try {
@@ -137,6 +172,7 @@ const Createproduct: React.FC = () => {
                         onChange={(event) => setname(event.target.value)}
                      />
                   </div>
+
                   <div className="grid grid-cols-4 items-center gap-4">
                      <Label htmlFor="name" className="text-left">
                         Description
@@ -150,6 +186,7 @@ const Createproduct: React.FC = () => {
                         onChange={(event) => setdescription(event.target.value)}
                      />
                   </div>
+
                   <div className="grid grid-cols-4 items-center gap-4">
                      <Label htmlFor="name" className="text-left">
                         Display
@@ -166,6 +203,44 @@ const Createproduct: React.FC = () => {
                            </SelectGroup>
                         </SelectContent>
                      </Select>
+                  </div>
+
+                  <div className="grid grid-cols-4 items-center gap-4">
+                     <Label htmlFor="name" className="text-left">
+                        Collection
+                     </Label>
+                     <Select onValueChange={(value) => setcollectionname(value)}>
+                        <SelectTrigger className="w-[277px]">
+                           <SelectValue placeholder="Select Collection" />
+                        </SelectTrigger>
+                        <SelectContent>
+                           <SelectGroup>
+                              {collections.map((collection) => (
+                                 <SelectItem
+                                    key={collection.id}
+                                    value={collection.name}
+                                 >
+                                    {collection.name}
+                                 </SelectItem>
+                              ))}
+                           </SelectGroup>
+                        </SelectContent>
+                     </Select>
+                  </div>
+
+                  <div className="grid grid-cols-4 items-center gap-4">
+                     <Label htmlFor="name" className="text-left">
+                        Price
+                     </Label>
+
+                     <Input
+                        id="name"
+                        placeholder="Enter Price"
+                        className="col-span-3"
+                        type="number"
+                        value={price}
+                        onChange={(event) => setprice(event.target.value)}
+                     />
                   </div>
                </div>
                <DialogFooter>

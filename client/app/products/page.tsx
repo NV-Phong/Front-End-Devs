@@ -51,7 +51,7 @@ function MyComponent() {
    if (!data) return <div>Đang tải...</div>;
 
    return (
-      <div>
+      <div className="mt-32">
          {/* Hiển thị dữ liệu */}
          <pre>{JSON.stringify(data, null, 2)}</pre>
          <CreateProduct />

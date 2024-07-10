@@ -21,19 +21,16 @@ export default function RootLayout({
    return (
       <html lang="en" id="root">
          <body className={inter.className}>
-            
             <ThemeProvider
                attribute="class"
                defaultTheme="light"
                enableSystem
                disableTransitionOnChange
             >
-               <DockDemo/>
+               <DockDemo />
                {children}
-               
                <Toaster />
             </ThemeProvider>
-            
          </body>
       </html>
    );

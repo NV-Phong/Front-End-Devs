@@ -24,6 +24,12 @@
    justify-content: center;
 }
 
+.fixed-element {
+   position: fixed;
+   top: 0;
+   margin-top: 10px;
+ }
+
 .header {
    position: absolute;
    width: 100%;

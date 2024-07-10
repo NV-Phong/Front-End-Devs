@@ -8,7 +8,7 @@ import { DockDemo } from "@/components/Custom/Dock";
 const Auth: React.FC = () => {
    return (
       <div>
-         <Tabs defaultValue="login" className="w-[400px]">
+         <Tabs defaultValue="login" className="w-[400px] mt-10">
             <TabsList className="grid w-full grid-cols-2">
                <TabsTrigger value="login">Login</TabsTrigger>
                <TabsTrigger value="register">Register</TabsTrigger>

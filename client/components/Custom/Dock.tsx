@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
 import Link from "next/link";
 import {
    CalendarIcon,
    Home,
    HomeIcon,
+   LogIn,
+   LogOut,
    MailIcon,
    PencilIcon,
    User,
@@ -20,8 +22,9 @@ import {
 } from "@/components/ui/tooltip";
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "../Themes/mode-toggle";
-import { NextStep } from "./NextStep";
-
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
 const Icons = {
@@ -291,6 +294,7 @@ const DATA = {
       { href: "/", icon: Home, label: "Home" },
       // { href: "#", icon: PencilIcon, label: "User" },
       { href: "/profile", icon: User, label: "Profile" },
+      { href: "/Auth", icon: LogIn, label: "Login" },
    ],
    contact: {
       social: {
@@ -327,14 +331,28 @@ const DATA = {
       },
    },
 };
-
+const SERVER_PORT = process.env.NEXT_PUBLIC_PORT;
 export function DockDemo() {
+   const router = useRouter();
+   const handleLogout = async () => {
+      try {
+         await axios.post(`${SERVER_PORT}Auth/Logout`, {
+            withCredentials: true,
+         });
+         Cookies.remove("token");
+         router.push("/Auth"); // Redirect to login page
+      } catch (error) {
+         console.error("Logout Error:", error);
+         // Consider adding a toast notification for error feedback
+      }
+   };
+
    return (
       <TooltipProvider>
          {/* <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
                Dock
             </span> */}
-         <Dock direction="middle" className="shadow">
+         <Dock direction="middle" className="shadow fixed-element">
             {DATA.navbar.map((item) => (
                <DockIcon key={item.href}>
                   <Tooltip>
@@ -382,16 +400,17 @@ export function DockDemo() {
                   </Tooltip>
                </DockIcon>
             ))}
-            <Separator orientation="vertical" className="h-full py-2" />
+            <Separator orientation="vertical" className="h-full" />
             <DockIcon>
                <Tooltip>
                   <TooltipTrigger asChild>
-                     <ModeToggle />
+                  <LogOut className="size-4" onClick={handleLogout}/>
                   </TooltipTrigger>
                   <TooltipContent>
-                     <p>Theme</p>
+                     <p>Logout</p>
                   </TooltipContent>
                </Tooltip>
+               
             </DockIcon>
          </Dock>
       </TooltipProvider>
