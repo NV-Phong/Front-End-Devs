@@ -30,9 +30,17 @@ const Login: React.FC = () => {
    useEffect(() => {
       const token = Cookies.get("token");
       if (token) {
-         router.push("/collection");
+         router.push("/products");
       }
    }, [router]);
+
+   const handleCancel = async () => {
+      try {
+         router.push("/");
+      } catch (error) {
+         console.error(error);
+      }
+   };
 
    const SubmitLogin = async (event: React.SyntheticEvent) => {
       event.preventDefault();
@@ -56,7 +64,7 @@ const Login: React.FC = () => {
                description: "Let go! to unleash your dreams.",
                action: <ToastAction altText="Ok">Ok</ToastAction>,
             });
-            router.push("/collection");
+            router.push("/products");
          }
       } catch (error) {
          console.error(error);
@@ -166,7 +174,7 @@ const Login: React.FC = () => {
                      </div>
                   </CardContent>
                   <CardFooter className="align">
-                     <Button variant="outline">Cancel</Button>
+                     <Button variant="outline" onClick={handleCancel}>Cancel</Button>
                      <Button
                         className="shadow"
                         type="submit"

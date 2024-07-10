@@ -3,7 +3,6 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import "@/styles/style.css";
 import Login from "@/components/Auth/Login";
 import Register from "@/components/Auth/Register";
-import { DockDemo } from "@/components/Custom/Dock";
 
 const Auth: React.FC = () => {
    return (

@@ -352,7 +352,7 @@ export function DockDemo() {
          {/* <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
                Dock
             </span> */}
-         <Dock direction="middle" className="shadow fixed-element">
+         <Dock direction="middle" className="shadow sticky fixed-element">
             {DATA.navbar.map((item) => (
                <DockIcon key={item.href}>
                   <Tooltip>

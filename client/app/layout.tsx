@@ -27,7 +27,7 @@ export default function RootLayout({
                enableSystem
                disableTransitionOnChange
             >
-               <DockDemo />
+               {/* <DockDemo /> */}
                {children}
                <Toaster />
             </ThemeProvider>
