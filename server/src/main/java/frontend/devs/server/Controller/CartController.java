@@ -45,4 +45,18 @@ public class CartController
 					return ResponseEntity.badRequest().body(null);
 				}
 		}
+
+	@PostMapping("ClearCart")
+	public ResponseEntity<?> clearCart(HttpServletRequest request)
+		{
+			List<Cart> carts = cartService.clearCart(request);
+			if (carts != null)
+				{
+					return ResponseEntity.status(200).body(carts);
+				}
+			else
+				{
+					return ResponseEntity.badRequest().body(null);
+				}
+		}
 }

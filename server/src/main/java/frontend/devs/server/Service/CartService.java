@@ -60,7 +60,18 @@ public class CartService
 					return cartRepository.findByIDUser(userId);
 				}
 			return null;
+		}
 
+	public List<Cart> clearCart(HttpServletRequest request)
+		{
+			String token = _JwtAuthenticationFilter.getJwtFromRequest(request);
+			if (token != null && _JwtTokenProvider.validateToken(token))
+				{
+					String userId = _JwtTokenProvider.getUserIdFromToken(token);
+					List<Cart> carts = cartRepository.findByIDUser(userId);
+					carts.clear();
+				}
+			return null;
 		}
 
 }

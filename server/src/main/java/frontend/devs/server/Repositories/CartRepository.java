@@ -14,4 +14,6 @@ public interface CartRepository extends JpaRepository<Cart, String>
 {
 	@Query("SELECT u FROM Cart u WHERE u.user.IDUser = :IDUser")
 	List<Cart> findByIDUser(@Param("IDUser") String IDUser);
+
+
 }
