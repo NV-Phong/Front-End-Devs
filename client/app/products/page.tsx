@@ -47,13 +47,25 @@ function MyComponent() {
       fetchData();
    }, [router]);
 
-   if (error) return <div>Lỗi: {error}</div>;
-   if (!data) return <div>Đang tải...</div>;
 
    return (
       <div className="mt-32">
          {/* Hiển thị dữ liệu */}
          <pre>{JSON.stringify(data, null, 2)}</pre>
+         <ul>
+
+
+         <ul>
+      {data && data.map((product: any, index: number) => (
+        <li key={index}>
+          Name: {product.name}, Description: {product.description}, 
+          Is Private: {product.isprivate ? "Yes" : "No"}, Price: {product.price}
+        </li>
+      ))}
+
+    </ul>
+
+    </ul>
          <CreateProduct />
       </div>
    );

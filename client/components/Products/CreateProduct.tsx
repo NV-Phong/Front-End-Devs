@@ -39,6 +39,7 @@ import {
    SelectValue,
 } from "../ui/select";
 import SelectCollection from "../Collection/SelectCollection";
+import { PlusCircle } from "lucide-react";
 
 const SERVER_PORT = process.env.NEXT_PUBLIC_PORT;
 interface Collection {
@@ -147,7 +148,7 @@ const Createproduct: React.FC = () => {
    return (
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
          <DialogTrigger asChild>
-            <Button className="glow1">Create</Button>
+            <Button className="glow2">Add Product</Button>
          </DialogTrigger>
          <DialogContent className="sm:max-w-[425px]">
             <form onSubmit={SubmitCreate}>
@@ -249,7 +250,7 @@ const Createproduct: React.FC = () => {
                      type="submit"
                      disabled={isSubmitting}
                   >
-                     Create
+                      Save
                   </Button>
                </DialogFooter>
             </form>

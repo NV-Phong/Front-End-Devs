@@ -89,10 +89,10 @@ const Register: React.FC = () => {
    };
 
    return (
-      <div>
+      <div >
          <form onSubmit={SubmitRegister}>
-            <TabsContent value="register">
-               <Card className="glass">
+            <TabsContent value="register" >
+               <Card>
                   <CardHeader>
                      <CardTitle>Register</CardTitle>
                      <CardDescription>
@@ -148,10 +148,10 @@ const Register: React.FC = () => {
                   </CardContent>
                   <CardFooter className="align">
                      <Button variant="outline">Cancel</Button>
-                     {/* <Button className="glow1" disabled={isSubmitting}>
+                     <Button className="glow3" disabled={isSubmitting}>
                         Register
-                     </Button> */}
-                     <NextStep disabled={isSubmitting}/>
+                     </Button>
+                     {/* <NextStep disabled={isSubmitting}/> */}
                   </CardFooter>
                </Card>
             </TabsContent>

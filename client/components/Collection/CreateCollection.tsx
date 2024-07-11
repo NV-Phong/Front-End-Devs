@@ -101,7 +101,7 @@ const CreateCollection: React.FC = () => {
    return (
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
          <DialogTrigger asChild>
-            <Button className="glow1">Create</Button>
+            <Button className="glow1">Create Collection</Button>
          </DialogTrigger>
          <DialogContent className="sm:max-w-[425px]">
             <form onSubmit={SubmitCreate}>

@@ -18,7 +18,7 @@ const NextStep = React.forwardRef<HTMLButtonElement, ButtonProps>(
             <div className={cn("arrow", className)}>
                <div></div>
             </div>
-            <span className="label"> Register </span>
+            <span className="label"> Payment </span>
          </button>
       );
    }

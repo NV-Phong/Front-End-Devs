@@ -30,7 +30,7 @@ const Login: React.FC = () => {
    useEffect(() => {
       const token = Cookies.get("token");
       if (token) {
-         router.push("/products");
+         router.push("/");
       }
    }, [router]);
 
@@ -64,7 +64,7 @@ const Login: React.FC = () => {
                description: "Let go! to unleash your dreams.",
                action: <ToastAction altText="Ok">Ok</ToastAction>,
             });
-            router.push("/products");
+            router.push("/");
          }
       } catch (error) {
          console.error(error);
@@ -102,7 +102,7 @@ const Login: React.FC = () => {
       <div>
          <form onSubmit={SubmitLogin}>
             <TabsContent value="login">
-               <Card className="glass texture">
+               <Card className="">
                   <CardHeader>
                      <CardTitle>Login</CardTitle>
                      <CardDescription>
@@ -176,7 +176,7 @@ const Login: React.FC = () => {
                   <CardFooter className="align">
                      <Button variant="outline" onClick={handleCancel}>Cancel</Button>
                      <Button
-                        className="shadow"
+                        className="glow1"
                         type="submit"
                         disabled={isSubmitting}
                      >

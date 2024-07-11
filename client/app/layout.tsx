@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import "@/styles/style.css";
 import { ThemeProvider } from "@/components/Themes/theme-provider";
 import { DockDemo } from "@/components/Custom/Dock";
+import { AlertDialog } from "@radix-ui/react-alert-dialog";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({
          <body className={inter.className}>
             <ThemeProvider
                attribute="class"
-               defaultTheme="light"
+               defaultTheme="dark"
                enableSystem
                disableTransitionOnChange
             >
